@@ -1,0 +1,28 @@
+version: "3.8"
+services:
+  web:
+    container_name: web
+    build: ./web
+    ports:
+      - "8080:80"
+    volumes:
+      - ~\Desktop\Docker\webroot:/var/www/html
+  database:
+    container_name: database
+    image: mariadb:10.1.37
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    volumes:
+#      - ~\Desktop\Docker\docker-conf\database\data:/var/lib/mysql
+      - db-data:/var/lib/mysql
+  adminer:
+    container_name: adminer
+    image: adminer:4.7.2
+    ports:
+      - "8081:8080"
+    depends_on:
+      - database
+volumes:
+  db-data:
+
+# docker-compose up -d --build

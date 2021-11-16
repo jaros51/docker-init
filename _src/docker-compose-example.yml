@@ -1,0 +1,15 @@
+# Ak nie je definovaná verzia, default je 1, odporúča sa aspoň 2
+# Verzia závisí od verzie Docker engine
+version: "3.8"
+# Služby (kontajnery)
+services:
+  service_1: # sekcia pre nastavenie kontajnera (zároveň DNS názov)
+    container_name: # názov kontajnera (nepovinné)
+    build: # cesta ku Dockerfile pre build
+    image: # alebo názov hotového image-u (lokálne, Dockerhub)
+    ports: # mapovanie portov (zvonku do Dockeru) (nepovinné)
+    volumes: # argument -v alebo aj COPY inštrukcia (nepovinné)
+    environment: # argument -e, environment premenné pre danú službu (nepovinné)
+    command: # definovanie príkazov po spustení kontajnera (prepisuje image)(nepovinné)
+
+  service_2: # další kontajner///////////////////

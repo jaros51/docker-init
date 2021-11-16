@@ -1,0 +1,31 @@
+FROM php7.4-apache
+
+USER root
+
+WORKDIR /a
+WORKDIR b
+WORKDIR c
+
+RUN pwd
+
+RUN mkdir /var/www/html/www
+COPY /webroot /var/www/html/www
+
+
+ENV app1_version 1.1.1
+ENV app2_version 3.2.*
+
+
+RUN apt-get update && apt-get -y curl \
+    git-$app2_version \
+    nieco \
+
+ENTRYPOINT ["/bin/echo","Hello"]
+CMD ["ARG"]
+
+VOLUME /var/www/html/www
+
+EXPOSE 80
+
+## docker run -it --name test test-image
+
